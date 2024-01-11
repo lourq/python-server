@@ -7,7 +7,7 @@ y = 2
 print(y)
 
 x , y = y , x # swap 
-x , y = y , x + y # Фибоначи
+x , y = y , x + y # Фибоначчи
 
 s = "Hello, %s!" % ("World")
 s = "x = %d, y = %d" % (x , y)
