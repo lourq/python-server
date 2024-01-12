@@ -27,14 +27,15 @@
 #   pip install mysql-connector-python
 #  Перевіряємо імпортом
 import mysql.connector
+import cgi
 import hashlib
 
 # 3. Підключаємось
 db_ini = {
     'host': 'localhost',
     'port': 3306,
-    'user': 'py202_user',
-    'password': 'pass_202',
+    'user': 'root',
+    'password': '',
     'database': 'py202',
     'charset': 'utf8mb4',
     'use_unicode': True,
@@ -143,7 +144,30 @@ def create_cart() :
     else :
         print( 'CREATE TABLE cart -- OK' )
 
+def hw() -> None : 
+    print("Content-Type: text/html")
+    print()
 
+    global db_connection
+    cursor = db_connection.cursor()
+    cursor.execute("SHOW DATABASES")
+
+    print("<html>")
+    print("<head>")
+    print("<title>List Data</title>")
+    print("</head>")
+    print("<body>")
+    print("<h1>DataBases:</h1>")
+    print("<table border='1'>")
+    print("<tr><th>DataBase Name</th></tr>")
+    for (database_name,) in cursor:
+        print(f"<tr><td>{cgi.escape(database_name)}</td></tr>")
+    print("</table>")
+    print("</body>")
+    print("</html>")
+
+    cursor.close()
+    db_connection.close()
 
 def main() -> None :
     connect_db()
@@ -162,7 +186,6 @@ def main() -> None :
     # create_products()
     # add_product( **product )
     create_cart()
-
 
 if __name__ == "__main__" :
     main()

@@ -33,8 +33,3 @@ print(f'''<!DOCTYPE html>
 </body>
 </html>
 ''')
-
-'''Д.З. CGI: забезпечити відображення лише наступних змінних оточення
-REQUEST_URI, QUERY_ STRING, REQUEST_METHOD, REMOTE_ADDR, REQUEST_SCHEME
-Розібрати рядок QUERY_STRING y словник
-x=10&y=20 --> {x: 10, y: 20}'''
